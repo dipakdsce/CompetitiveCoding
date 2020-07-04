@@ -1,34 +1,19 @@
 package com.geeksforgeeks;
 
+import com.helper.Graph;
+
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class SumOfMinimumAtEachDepth {
     private static int V;
     private static Graph graph;
-    static class Graph {
-        private int v;
-        private LinkedList<Integer> adj[];
-
-        Graph(int v) {
-            this.v = v;
-            adj = new LinkedList[v];
-            for(int i=0; i<v; i++) {
-                adj[i] = new LinkedList<>();
-            }
-        }
-
-        public void addEdge(int v, int w) {
-            adj[v].add(w);
-        }
-    }
 
     static int maxDepth = 0;
 
     public static void findDepth(Graph graph, boolean[] visited, int source, int depth) {
         visited[source] = true;
         maxDepth = Math.max(maxDepth, depth);
-        for(Integer n : graph.adj[source]) {
+        for(Integer n : graph.getAdj()[source]) {
             if(!visited[n]) {
                 findDepth(graph, visited, n, depth + 1);
             }
@@ -38,7 +23,7 @@ public class SumOfMinimumAtEachDepth {
     public static void dfs(Graph graph, int source, boolean[] visited, int[] store_min_elements, int depth) {
         visited[source] = true;
         store_min_elements[depth] = Math.min(store_min_elements[depth], source);
-        Iterator<Integer> iterator = graph.adj[source].iterator();
+        Iterator<Integer> iterator = graph.getAdj()[source].iterator();
         while(iterator.hasNext()) {
             int n = iterator.next();
             if(!visited[n]) {
