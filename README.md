@@ -1,14 +1,14 @@
 # CompetitiveCoding
 CompetitiveCoding
 
-###LeetCode Profile
+### LeetCode Profile
 https://leetcode.com/dipakise/
 
-###Hackerrank Profile
+### Hackerrank Profile
 https://www.hackerrank.com/dipakdsce
 
-###Hackerearth Profile
+### Hackerearth Profile
 https://www.hackerearth.com/@dipakdsce
 
-###Codec chef Profile 
+### Codec chef Profile 
 https://www.hackerearth.com/@dipakdsce
