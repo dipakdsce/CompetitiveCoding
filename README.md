@@ -11,4 +11,4 @@ https://www.hackerrank.com/dipakdsce
 https://www.hackerearth.com/@dipakdsce
 
 ### Codec chef Profile 
-https://www.hackerearth.com/@dipakdsce
+https://www.codechef.com/users/dipak29/
