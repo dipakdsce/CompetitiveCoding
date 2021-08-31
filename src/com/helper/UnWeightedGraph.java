@@ -2,11 +2,11 @@ package com.helper;
 
 import java.util.LinkedList;
 
-public class Graph {
+public class UnWeightedGraph {
     private int v;
     private LinkedList<Integer> adj[];
 
-    public Graph(int v) {
+    public UnWeightedGraph(int v) {
         this.v = v;
         adj = new LinkedList[v];
         for (int i = 0; i < v; i++) {
@@ -14,8 +14,8 @@ public class Graph {
         }
     }
 
-    public void addEdge(int v, int w) {
-        adj[v].add(w);
+    public void addEdge(int u, int v) {
+        adj[u].add(v);
     }
 
     public LinkedList<Integer>[] getAdj() {

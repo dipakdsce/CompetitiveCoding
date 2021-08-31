@@ -1,16 +1,16 @@
 package com.geeksforgeeks;
 
-import com.helper.Graph;
+import com.helper.UnWeightedGraph;
 
 import java.util.Iterator;
 
 public class SumOfMinimumAtEachDepth {
     private static int V;
-    private static Graph graph;
+    private static UnWeightedGraph graph;
 
     static int maxDepth = 0;
 
-    public static void findDepth(Graph graph, boolean[] visited, int source, int depth) {
+    public static void findDepth(UnWeightedGraph graph, boolean[] visited, int source, int depth) {
         visited[source] = true;
         maxDepth = Math.max(maxDepth, depth);
         for(Integer n : graph.getAdj()[source]) {
@@ -20,7 +20,7 @@ public class SumOfMinimumAtEachDepth {
         }
     }
 
-    public static void dfs(Graph graph, int source, boolean[] visited, int[] store_min_elements, int depth) {
+    public static void dfs(UnWeightedGraph graph, int source, boolean[] visited, int[] store_min_elements, int depth) {
         visited[source] = true;
         store_min_elements[depth] = Math.min(store_min_elements[depth], source);
         Iterator<Integer> iterator = graph.getAdj()[source].iterator();
@@ -32,7 +32,7 @@ public class SumOfMinimumAtEachDepth {
         }
     }
 
-    public static void minSum_depth(Graph graph, int source) {
+    public static void minSum_depth(UnWeightedGraph graph, int source) {
         boolean[] visited = new boolean[V];
         findDepth(graph, visited, source, 0);
         int[] store_min_elements = new int[maxDepth + 1];
@@ -53,7 +53,7 @@ public class SumOfMinimumAtEachDepth {
     }
 
     public static void main(String[] args) {
-        graph = new Graph(8);
+        graph = new UnWeightedGraph(8);
         V = 8;
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);

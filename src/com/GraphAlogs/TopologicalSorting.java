@@ -1,13 +1,13 @@
 package com.GraphAlogs;
 
-import com.helper.Graph;
+import com.helper.UnWeightedGraph;
 
 import java.util.Iterator;
 import java.util.Stack;
 
 public class TopologicalSorting {
 
-    public static Stack<Integer> topSort(Graph graph) {
+    public static Stack<Integer> topSort(UnWeightedGraph graph) {
         Stack<Integer> resultStack = new Stack<>();
         int V = graph.getNumberOfVertices();
         boolean[] visited = new boolean[V];
@@ -20,7 +20,7 @@ public class TopologicalSorting {
         return resultStack;
     }
 
-    public static void topSortUtil(Graph graph, boolean[] visited, Stack<Integer> stack, int source) {
+    public static void topSortUtil(UnWeightedGraph graph, boolean[] visited, Stack<Integer> stack, int source) {
         visited[source] = true;
         Iterator<Integer> iterator = graph.getAdj()[source].iterator();
         while (iterator.hasNext()) {
@@ -34,7 +34,7 @@ public class TopologicalSorting {
     }
 
     public static void main(String[] args) {
-        Graph graph = new Graph(7);
+        UnWeightedGraph graph = new UnWeightedGraph(7);
         graph.addEdge(0,2);
         graph.addEdge(1,2);
         graph.addEdge(2,3);
