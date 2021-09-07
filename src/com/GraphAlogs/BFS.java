@@ -1,6 +1,6 @@
 package com.GraphAlogs;
 
-import com.helper.UnWeightedGraph;
+import com.utilsDataStructures.UnWeightedGraph;
 
 import java.util.Iterator;
 import java.util.LinkedList;

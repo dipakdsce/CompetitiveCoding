@@ -1,6 +1,6 @@
 package com.leetCode;
 
-import com.leetCode.helper.ListNode;
+import com.utilsDataStructures.ListNode;
 
 
 public class MergeTwoSortedLists {

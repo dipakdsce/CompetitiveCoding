@@ -1,4 +1,4 @@
-package com.leetCode.helper;
+package com.utilsDataStructures;
 
 public class ListNode {
     public int val;

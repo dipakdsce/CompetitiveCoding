@@ -1,6 +1,9 @@
 package com.GraphAlogs;
 
-import com.helper.UnWeightedGraph;
+import com.utilsDataStructures.UnWeightedGraph;
+
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class DetectCycle {
 
@@ -23,16 +26,56 @@ public class DetectCycle {
         return false;
     }
 
-    public static boolean isCyclic(UnWeightedGraph graph) {
+    public static boolean isCyclicWithDFS(UnWeightedGraph graph) {
         boolean[] visited = new boolean[graph.getNumberOfVertices()];
         for(int i=0; i< graph.getNumberOfVertices(); i++) {
-            if(DFSUtil(i, graph, visited)) {
-                System.out.println("in is cyclic: " + i);
-                return true;
+            if(!visited[i]) {
+                if(DFSUtil(i, graph, visited)) {
+                    System.out.println("in is cyclic: " + i);
+                    return true;
+                }
             }
         }
         return false;
     }
+
+    public static boolean BFSUtil(UnWeightedGraph graph, boolean[] visited, int source) {
+        LinkedList<Integer> queue = new LinkedList<>();
+        visited[source] = true;
+        queue.add(source);
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            Iterator<Integer> iterator = graph.getAdj()[node].iterator();
+            while(iterator.hasNext()) {
+                int nextNode = iterator.next();
+                if(visited[nextNode]) {
+                    return true;
+                } else {
+                    visited[nextNode] = true;
+                    queue.add(nextNode);
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean isCyclicWithBFS(UnWeightedGraph graph) {
+        boolean[] visited = new boolean[graph.getNumberOfVertices()];
+        for(int i=0; i<graph.getNumberOfVertices(); i++) {
+            /*if(BFSUtil(graph, visited, i)) {
+                System.out.println("in is cyclic: " + i);
+                return true;
+            }*/
+            if(!visited[i]) {
+                if(BFSUtil(graph, visited, i)) {
+                    System.out.println("in is cyclic: " + i);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public static void main(String[] args) {
         UnWeightedGraph graph = new UnWeightedGraph(4);
@@ -42,7 +85,14 @@ public class DetectCycle {
         graph.addEdge(2, 0);
         graph.addEdge(2, 3);
         graph.addEdge(3, 3);
-        System.out.println(isCyclic(graph));
+        UnWeightedGraph graph1 = new UnWeightedGraph(4);
+        graph1.addEdge(0, 1);
+        graph1.addEdge(1, 2);
+        graph1.addEdge(1, 3);
+        System.out.println(isCyclicWithDFS(graph1));
+        System.out.println(isCyclicWithBFS(graph1));
+        System.out.println(isCyclicWithBFS(graph));
+        System.out.println(isCyclicWithDFS(graph));
     }
 
 }

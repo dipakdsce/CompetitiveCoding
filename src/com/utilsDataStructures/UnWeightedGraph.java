@@ -1,4 +1,4 @@
-package com.helper;
+package com.utilsDataStructures;
 
 import java.util.LinkedList;
 
