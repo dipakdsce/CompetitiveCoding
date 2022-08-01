@@ -1,5 +1,8 @@
 package com.leetCode.SeptemberChallenge2021;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 A newly designed keypad was tested, where a tester pressed a sequence of n keys, one at a time.
 
@@ -51,11 +54,11 @@ public class SlowestKey {
     public static char slowestKey(int[] releaseTimes, String keysPressed) {
         char result = keysPressed.charAt(0);
         int maxTime = releaseTimes[0];
-        for(int i=1; i<releaseTimes.length; i++) {
-            int time = releaseTimes[i] - releaseTimes[i-1];
-            if(time == maxTime) {
+        for (int i = 1; i < releaseTimes.length; i++) {
+            int time = releaseTimes[i] - releaseTimes[i - 1];
+            if (time == maxTime) {
                 result = result >= keysPressed.charAt(i) ? result : keysPressed.charAt(i);
-            } else if(time > maxTime) {
+            } else if (time > maxTime) {
                 maxTime = time;
                 result = keysPressed.charAt(i);
             }
@@ -64,8 +67,43 @@ public class SlowestKey {
     }
 
     public static void main(String[] args) {
-        int[] releaseTime = {12,23,36,46,62};
-        String keyPressed = "spuda";
-        System.out.println(slowestKey(releaseTime, keyPressed));
+//        int[] releaseTime = {12,23,36,46,62};
+//        String keyPressed = "spuda";
+//        System.out.println(slowestKey(releaseTime, keyPressed));
+//        List<Integer> list = new ArrayList<>();
+////        list.a
+        String[] list = {" Ernie Gibbs 11 2"};
+        System.out.println(newList(list));
+    }
+
+    public static String newList(String[] students) {
+        //Insert your code here
+        String result = "";
+        for (String student : students) {
+            String name = "";
+            int numberOfStudents = 0;
+            int totalMarks = 0;
+            boolean nameDone = false;
+            for (int i = 0; i < student.length(); i++) {
+                char c = student.charAt(i);
+                if (c >= 48 && c <= 57) {
+                    nameDone = true;
+                    if (i < student.length() - 1 && student.charAt(i + 1) >= '1' && student.charAt(i + 1) <= '9') {
+                        i++;
+                    } else if (i < student.length() - 1 && student.charAt(i + 1) == '0' && c == '1') {
+                        totalMarks += 10;
+                        numberOfStudents++;
+                    } else {
+                        totalMarks += (int) c - 48;
+                        numberOfStudents++;
+                    }
+
+                } else if (!nameDone) {
+                    name += String.valueOf(c);
+                }
+            }
+            result += name.trim() + "-" + (totalMarks / numberOfStudents);
+        }
+        return result;
     }
 }
