@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Day1UniquePaths {
     public static void main(String[] args) {
-        int m = 3;
-        int n = 7;
+        int m = 4;
+        int n = 4;
         System.out.println(uniquePaths(m, n));
     }
 
